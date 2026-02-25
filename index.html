@@ -385,6 +385,54 @@
           width: 100%;
         }
       }
+
+      /* ✅ FORZAR RESPONSIVE EN CELULAR (quita el espacio a la derecha) */
+@media (max-width: 900px) {
+  body { overflow: auto; }
+
+  .wrap{
+    height: auto;
+    min-height: 100vh;
+    padding: 14px;
+  }
+
+  .card{
+    width: 100%;
+    max-width: 100%;
+    border-radius: 22px;
+  }
+
+  .content{
+    grid-template-columns: 1fr !important; /* <- esto elimina la 2da columna */
+    padding: 18px;
+  }
+
+  .topbar{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .badge{ width: 100%; justify-content: center; }
+
+  .btns{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btns button,
+  .btns .yt-btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .photo{ height: 220px; }
+
+  .mini{ grid-template-columns: 1fr; }
+}
+
+/* Extra: iPhone / Safari a veces necesita esto */
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
     </style>
   </head>
 
@@ -600,3 +648,4 @@
     </script>
   </body>
 </html>
+
