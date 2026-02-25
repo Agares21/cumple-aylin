@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Feliz Cumple 🎉</title>
+    <style>
+      :root {
+        --bg1: #ff7aa2;
+        --bg2: #7b6cff;
+        --card: rgba(255, 255, 255, 0.14);
+        --card2: rgba(255, 255, 255, 0.1);
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.82);
+        --accent: #ffd166;
+        --shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          "Apple Color Emoji",
+          "Segoe UI Emoji";
+        min-height: 100vh;
+        color: var(--text);
+        overflow: hidden;
+        background:
+          radial-gradient(
+            1200px 800px at 20% 15%,
+            rgba(255, 255, 255, 0.25),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 700px at 85% 25%,
+            rgba(255, 255, 255, 0.18),
+            transparent 55%
+          ),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+      }
+
+      /* Brillos suaves */
+      .glow {
+        position: absolute;
+        inset: -30%;
+        background: conic-gradient(
+          from 220deg at 50% 50%,
+          rgba(255, 255, 255, 0.18),
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0.18)
+        );
+        filter: blur(40px);
+        animation: spin 12s linear infinite;
+        pointer-events: none;
+        opacity: 0.65;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Contenido centrado */
+      .wrap {
+        position: relative;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .card {
+        width: min(920px, 100%);
+        border-radius: 28px;
+        background: linear-gradient(180deg, var(--card), var(--card2));
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .badge {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+      .badge .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 6px rgba(255, 209, 102, 0.25);
+      }
+
+      .btns {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      button {
+        border: 0;
+        cursor: pointer;
+        font-weight: 700;
+        padding: 10px 14px;
+        border-radius: 999px;
+        color: #1b1b1b;
+        background: rgba(255, 255, 255, 0.92);
+        transition:
+          transform 0.08s ease,
+          opacity 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      button:active {
+        transform: scale(0.98);
+      }
+      button.secondary {
+        background: rgba(255, 255, 255, 0.14);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .yt-btn {
+        text-decoration: none;
+        font-weight: 700;
+        padding: 10px 14px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        background: rgba(255, 255, 255, 0.14);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition:
+          transform 0.08s ease,
+          opacity 0.2s ease;
+      }
+      .yt-btn:active {
+        transform: scale(0.98);
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 22px;
+        padding: 26px;
+      }
+      @media (max-width: 860px) {
+        body {
+          overflow: auto;
+        }
+        .wrap {
+          height: auto;
+          min-height: 100vh;
+        }
+        .content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .title {
+        font-size: clamp(32px, 4.2vw, 56px);
+        line-height: 1.02;
+        margin: 6px 0 10px;
+        letter-spacing: -0.6px;
+      }
+      .subtitle {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: clamp(14px, 1.6vw, 18px);
+        line-height: 1.55;
+      }
+
+      .paper {
+        border-radius: 22px;
+        padding: 18px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(0, 0, 0, 0.12);
+      }
+
+      .msg {
+        font-size: 16px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.92);
+        margin: 0;
+        white-space: pre-line;
+      }
+
+      .sign {
+        margin-top: 20px;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      .sign .heart {
+        font-size: 20px; /* controla tamaño del emoji */
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* Lado derecho */
+      .right {
+        display: grid;
+        gap: 16px;
+        align-content: start;
+      }
+
+      .photo {
+        border-radius: 24px;
+        height: 280px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background:
+          radial-gradient(
+            600px 320px at 20% 30%,
+            rgba(255, 255, 255, 0.25),
+            transparent 55%
+          ),
+          radial-gradient(
+            540px 300px at 80% 30%,
+            rgba(255, 255, 255, 0.2),
+            transparent 55%
+          ),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.15));
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+      .photo h3 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: 0.2px;
+      }
+      .photo p {
+        margin: 10px 0 0;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.45;
+      }
+
+      .mini {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .tile {
+        border-radius: 20px;
+        padding: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .tile .k {
+        font-weight: 900;
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+      .tile .v {
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.45;
+        font-size: 14px;
+      }
+
+      .footer {
+        padding: 0 26px 26px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 13px;
+      }
+      .hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      /* Corazones flotando */
+      .heart-float {
+        position: absolute;
+        bottom: -30px;
+        font-size: 18px;
+        opacity: 0.9;
+        animation: floatUp linear forwards;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
+        pointer-events: none;
+      }
+      @keyframes floatUp {
+        to {
+          transform: translateY(-120vh) translateX(var(--dx)) rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+
+      /* Canvas de confeti */
+      canvas {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      /* ===== Mejoras Responsive (móvil) ===== */
+      @media (max-width: 860px) {
+        .topbar {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+        }
+
+        .badge {
+          width: 100%;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .btns {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .btns button,
+        .btns .yt-btn {
+          flex: 1 1 auto;
+          justify-content: center;
+          min-width: 140px; /* evita que queden demasiado pequeños */
+        }
+
+        .photo {
+          height: 220px; /* baja la altura en celular */
+        }
+
+        .mini {
+          grid-template-columns: 1fr; /* tiles en una sola columna */
+        }
+      }
+
+      /* Extra para pantallas muy pequeñas */
+      @media (max-width: 420px) {
+        .wrap {
+          padding: 14px;
+        }
+        .content {
+          padding: 18px;
+        }
+        .title {
+          font-size: 30px;
+        }
+        .btns button,
+        .btns .yt-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="glow"></div>
+    <canvas id="confetti"></canvas>
+
+    <main class="wrap">
+      <section class="card">
+        <div class="topbar">
+          <div class="badge">
+            <span class="dot"></span>
+            <span
+              >Hoy celebramos a
+              <span id="nameTop">Mi Mejor Amiga</span> ✨</span
+            >
+          </div>
+
+          <div class="btns">
+            <button id="btnConfetti" title="Lluvia de confeti">
+              🎉 Confeti
+            </button>
+            <button class="secondary" id="btnHearts" title="Más corazones">
+              💖 Corazones
+            </button>
+            <a
+              class="yt-btn"
+              id="btnYoutube"
+              href="https://youtu.be/Gx0GiKhpQZ4?list=RDGx0GiKhpQZ4"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Abrir YouTube"
+            >
+              ▶️ YouTube
+            </a>
+          </div>
+        </div>
+
+        <div class="content">
+          <div>
+            <h1 class="title">
+              Feliz cumpleaños, <span id="nameBig">Mi Mejor Amiga</span> 🥳
+            </h1>
+            <p class="subtitle">
+              Te hice esta mini página para recordarte algo simple:
+              <b>eres una persona increíble</b> y me alegra un montón tenerte en
+              mi vida.
+            </p>
+
+            <div class="paper">
+              <p class="msg" id="message">
+                Hoy es tu día, y de verdad deseo que lo pases precioso. Que la
+                vida te devuelva en sonrisas todo lo bonito que das, que te
+                lleguen buenas noticias, abrazos reales y momentos que se
+                queden. Gracias por estar, por tu forma de ser y por hacer mis
+                días más livianos. Te quiero mucho. 💛
+              </p>
+
+              <div class="sign">
+                <span class="heart">🫶</span>
+                <span>Con cariño, <span id="fromName">Tu amigo</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class="photo" id="photoBox">
+              <div>
+                <h3>✨ Un recordatorio ✨</h3>
+                <p>
+                  Aquí puedes poner una foto de ustedes o de ella.<br />
+                  (Abajo te dejo cómo hacerlo en 10 segundos)
+                </p>
+              </div>
+            </div>
+
+            <div class="mini">
+              <div class="tile">
+                <div class="k">🌟 Deseo #1</div>
+                <div class="v">
+                  Que este año te acerque a todo lo que sueñas.
+                </div>
+              </div>
+              <div class="tile">
+                <div class="k">🍀 Deseo #2</div>
+                <div class="v">Que te rodees de gente que te cuide bonito.</div>
+              </div>
+              <div class="tile">
+                <div class="k">💫 Deseo #3</div>
+                <div class="v">Que nunca te falten motivos para sonreír.</div>
+              </div>
+              <div class="tile">
+                <div class="k">🎁 Y obvio…</div>
+                <div class="v">Que hoy te consientan como te mereces 😌</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="hint">📱 Tip: se ve mejor desde el celu</div>
+          <div class="hint">✨ Hecho con cariño (y un poquito de magia)</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Música opcional (si quieres, reemplaza el src por un mp3 tuyo) -->
+    <audio id="music" preload="none">
+      <!-- Ejemplo: <source src="musica.mp3" type="audio/mpeg"> -->
+    </audio>
+
+    <script>
+      // ====== Personalización rápida ======
+      // Cambia aquí el nombre de tu amiga y tu nombre:
+      const amigaNombre = "Aylin";
+      const tuNombre = "Alejandro"; // <-- cámbialo
+
+      document.getElementById("nameTop").textContent = amigaNombre;
+      document.getElementById("nameBig").textContent = amigaNombre;
+      document.getElementById("fromName").textContent = tuNombre;
+
+      // ====== Corazones flotando ======
+      const hearts = ["💖", "💗", "💘", "💝", "💞", "✨", "🎈"];
+      function spawnHeart(count = 1) {
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement("div");
+          el.className = "heart-float";
+          el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+          const left = Math.random() * 100;
+          const dur = 4 + Math.random() * 4;
+          const dx = (Math.random() * 2 - 1) * 120 + "px";
+          const rot = (Math.random() * 2 - 1) * 60 + "deg";
+          el.style.left = left + "vw";
+          el.style.animationDuration = dur + "s";
+          el.style.setProperty("--dx", dx);
+          el.style.setProperty("--rot", rot);
+          el.style.fontSize = 16 + Math.random() * 18 + "px";
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), dur * 1000);
+        }
+      }
+      // corazones suaves automáticos
+      setInterval(() => spawnHeart(1), 650);
+
+      // ====== Confeti en canvas ======
+      const canvas = document.getElementById("confetti");
+      const ctx = canvas.getContext("2d");
+      let W, H;
+      function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resize);
+      resize();
+
+      let confettiPieces = [];
+      function burstConfetti(amount = 160) {
+        const now = performance.now();
+        for (let i = 0; i < amount; i++) {
+          confettiPieces.push({
+            x: Math.random() * W,
+            y: -20 - Math.random() * H * 0.2,
+            w: 6 + Math.random() * 8,
+            h: 8 + Math.random() * 12,
+            vx: (Math.random() * 2 - 1) * 2.2,
+            vy: 2 + Math.random() * 4,
+            rot: Math.random() * Math.PI,
+            vr: (Math.random() * 2 - 1) * 0.08,
+            life: now + 5000 + Math.random() * 2500,
+            // color random suave:
+            c: `hsla(${Math.floor(Math.random() * 360)}, 95%, 70%, .95)`,
+          });
+        }
+      }
+
+      function tick(t) {
+        ctx.clearRect(0, 0, W, H);
+        confettiPieces = confettiPieces.filter(
+          (p) => t < p.life && p.y < H + 40,
+        );
+        for (const p of confettiPieces) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vr;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.c;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      // ====== Botones ======
+      document.getElementById("btnConfetti").addEventListener("click", () => {
+        burstConfetti(220);
+      });
+
+      document.getElementById("btnHearts").addEventListener("click", () => {
+        spawnHeart(14);
+      });
+
+      // Confeti inicial suave
+      setTimeout(() => burstConfetti(120), 350);
+
+      // ====== Click en la tarjeta para un mini detalle ======
+      document.querySelector(".card").addEventListener("click", (e) => {
+        if (e.target.tagName.toLowerCase() === "button") return;
+        spawnHeart(6);
+      });
+    </script>
+  </body>
+</html>
